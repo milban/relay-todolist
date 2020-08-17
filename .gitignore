@@ -5,5 +5,3 @@
 **/**/.graphqlconfig
 
 relay/dist
-
-relay/src/__generated__
