@@ -16,18 +16,18 @@ scalar Json
 
 type Mutation {
   createTodo(input: TodoCreateInput!): Todo!
-  deleteTodo(id: Int!): Todo!
+  deleteTodo(id: ID!): Todo!
   updateTodo(input: TodoUpdateInput!): Todo!
 }
 
 type Query {
-  todo(id: Int!): Todo!
+  todo(id: ID!): Todo!
   todos: [Todo!]!
 }
 
 type Todo {
   body: String
-  id: Int
+  id: ID
   isCompleted: Boolean
   title: String
 }
@@ -39,7 +39,7 @@ input TodoCreateInput {
 
 input TodoUpdateInput {
   body: String
-  id: Int!
+  id: ID!
   isCompleted: Boolean
   title: String
 }

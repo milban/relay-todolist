@@ -1,0 +1,32 @@
+{
+  "name": "relay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql --extensions js jsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^2.6.11",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-relay": "^10.0.1",
+    "relay-runtime": "^10.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-relay": "^10.0.1",
+    "graphql": "^15.3.0",
+    "relay-compiler": "^10.0.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}

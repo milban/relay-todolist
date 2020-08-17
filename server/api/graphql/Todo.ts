@@ -3,7 +3,7 @@ import { schema } from 'nexus';
 schema.objectType({
     name: 'Todo',
     definition(t) {
-        t.int('id')
+        t.id('id')
         t.string('title')
         t.string('body')
         t.boolean('isCompleted')
@@ -21,7 +21,7 @@ schema.inputObjectType({
 schema.inputObjectType({
     name: 'TodoUpdateInput',
     definition(t) {
-        t.int('id', { required: true })
+        t.id('id', { required: true })
         t.string('title', { required: false })
         t.string('body', { required: false })
         t.boolean('isCompleted', { required: false })
@@ -35,7 +35,7 @@ schema.extendType({
             nullable: false,
             type: 'Todo',
             args: {
-              id: schema.intArg({ required: true })
+              id: schema.idArg({ required: true })
             },
             resolve(_root, _args, ctx) {
                 const todo = ctx.db.todos.find(todo => todo.id === _args.id);
@@ -68,7 +68,7 @@ schema.extendType({
             },
             resolve(_root, _args, ctx) {
                 const todo = {
-                    id: ctx.db.todos.length + 1,
+                    id: String(ctx.db.todos.length + 1),
                     title: _args.input.title,
                     body: _args.input.body,
                     isCompleted: false,
@@ -109,7 +109,7 @@ schema.extendType({
             nullable: false,
             type: 'Todo',
             args: {
-                id: schema.intArg({ required: true })
+                id: schema.idArg({ required: true })
             },
             resolve(_root, _args, ctx) {
                 const targetTodo = ctx.db.todos.find(todo => todo.id === _args.id);
