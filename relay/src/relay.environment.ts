@@ -1,13 +1,13 @@
 import {
     Environment,
     Network,
-    RecordSource,
-    Store,
+    RecordSource, RequestParameters,
+    Store, Variables,
 } from 'relay-runtime';
 
 function fetchQuery(
-    operation,
-    variables,
+    operation: RequestParameters,
+    variables: Variables,
 ) {
     return fetch('http://localhost:4000/graphql', {
         method: 'POST',

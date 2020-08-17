@@ -1,29 +1,24 @@
-/**
- * @flow
- */
-
+/* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-'use strict';
+import { ConcreteRequest } from "relay-runtime";
+export type todoQueryVariables = {
+    id: string;
+};
+export type todoQueryResponse = {
+    readonly todo: {
+        readonly id: string | null;
+        readonly title: string | null;
+        readonly body: string | null;
+        readonly isCompleted: boolean | null;
+    };
+};
+export type todoQuery = {
+    readonly response: todoQueryResponse;
+    readonly variables: todoQueryVariables;
+};
 
-/*::
-import type { ConcreteRequest } from 'relay-runtime';
-export type todoQueryVariables = {|
-  id: string
-|};
-export type todoQueryResponse = {|
-  +todo: {|
-    +id: ?string,
-    +title: ?string,
-    +body: ?string,
-    +isCompleted: ?boolean,
-  |}
-|};
-export type todoQuery = {|
-  variables: todoQueryVariables,
-  response: todoQueryResponse,
-|};
-*/
 
 
 /*
@@ -39,7 +34,7 @@ query todoQuery(
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "defaultValue": null,
@@ -121,7 +116,5 @@ return {
   }
 };
 })();
-// prettier-ignore
-(node/*: any*/).hash = '7aea0923fb90164c608e62d960869b65';
-
-module.exports = node;
+(node as any).hash = '7aea0923fb90164c608e62d960869b65';
+export default node;

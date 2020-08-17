@@ -9,7 +9,14 @@
                 }
             }
         ],
-        "@babel/preset-react"
+        "@babel/preset-react",
+        [
+            "@babel/preset-typescript",
+            {
+                "allExtensions": true,
+                "isTSX": true
+            }
+        ]
     ],
     "plugins": [
         "relay"

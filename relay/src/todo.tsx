@@ -1,9 +1,14 @@
 import React from "react";
 import {graphql, QueryRenderer} from "react-relay";
 import relayEnvironment from "./relay.environment";
+import {todoQuery, todoQueryResponse} from "src/__generated__/todoQuery.graphql";
 
-const renderQuery = ({error, props}) => {
-    console.log('__generated__/todoQuery:', todoQuery);
+interface RenderQuery {
+    error: Error | null;
+    props: todoQueryResponse | null;
+}
+
+const renderQuery = ({error, props}: RenderQuery) => {
     if (error) {
         return <div>{error.message}</div>;
     } else if (props) {
@@ -19,7 +24,7 @@ const renderQuery = ({error, props}) => {
 
 export default function Todo() {
     return (
-    <QueryRenderer
+    <QueryRenderer<todoQuery>
         environment={relayEnvironment}
         query={graphql`
                 query todoQuery($id: ID!) {
@@ -32,7 +37,7 @@ export default function Todo() {
                 }
             `}
         variables={{
-            id: 1
+            id: '1'
         }}
         render={renderQuery}
     />)
