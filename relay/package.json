@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack-dev-server",
     "relay": "relay-compiler --src ./src --schema ./schema.graphql --language typescript --extensions ts tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -30,10 +31,12 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-relay": "^10.0.1",
     "graphql": "^15.3.0",
+    "html-webpack-plugin": "^4.3.0",
     "relay-compiler": "^10.0.1",
     "relay-compiler-language-typescript": "^13.0.1",
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }

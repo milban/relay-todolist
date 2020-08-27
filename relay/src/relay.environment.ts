@@ -1,8 +1,10 @@
 import {
     Environment,
     Network,
-    RecordSource, RequestParameters,
-    Store, Variables,
+    RecordSource,
+    RequestParameters,
+    Store,
+    Variables,
 } from 'relay-runtime';
 
 function fetchQuery(

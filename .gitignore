@@ -5,3 +5,11 @@
 **/**/.graphqlconfig
 
 relay/dist
+
+relay/src/__generated__
+
+relay/.graphqlconfig
+
+relay/schema.graphql
+
+relay/dist
