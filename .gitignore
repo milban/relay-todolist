@@ -6,7 +6,7 @@
 
 relay/dist
 
-relay/src/__generated__
+**/*/__generated__
 
 relay/.graphqlconfig
 

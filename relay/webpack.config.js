@@ -8,7 +8,10 @@ module.exports = {
         filename: "index.bundle.js"
     },
     resolve: {
-        extensions: ['.ts', '.js', '.tsx', '.jsx']
+        extensions: ['.ts', '.js', '.tsx', '.jsx'],
+        alias: {
+            'src': path.resolve(__dirname, 'src')
+        }
     },
     module: {
         rules: [
