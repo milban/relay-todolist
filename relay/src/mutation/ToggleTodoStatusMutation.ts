@@ -1,17 +1,27 @@
 import {graphql, commitMutation} from 'react-relay';
 import {Environment} from "relay-runtime/lib/store/RelayStoreTypes";
-import environment from "src/relay.environment";
-import {ToggleTodoStatusMutation} from "src/mutation/__generated__/ToggleTodoStatusMutation.graphql";
+import {
+    ToggleTodoStatusMutation,
+    ToggleTodoStatusMutationResponse
+} from "src/mutation/__generated__/ToggleTodoStatusMutation.graphql";
 
 const mutation = graphql`
     mutation ToggleTodoStatusMutation($input: TodoUpdateInput!) {
         updateTodo(input: $input) {
-            __typename
             id
             isCompleted
         }
     }
 `
+
+function getOptimisticResponse(id: string, isCompleted: boolean): ToggleTodoStatusMutationResponse {
+    return {
+        updateTodo:{
+            id,
+            isCompleted
+        }
+    }
+}
 
 function commit(
     environment: Environment,
@@ -28,6 +38,7 @@ function commit(
                     isCompleted,
                 },
             },
+            optimisticResponse: getOptimisticResponse(id, isCompleted),
         }
     )
 }
