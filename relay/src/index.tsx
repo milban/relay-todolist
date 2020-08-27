@@ -1,9 +1,9 @@
 import ReactDom from 'react-dom'
 import React from 'react';
-import ViewerTodo from "src/viewer/Todo";
+import ViewerTodoList from "src/viewer/TodoList";
 
 function App() {
-    return <ViewerTodo id={'1'} />
+    return <ViewerTodoList />;
 }
 
 ReactDom.render(<App/>, document.getElementById('root'))

@@ -13,7 +13,7 @@ type Mutation {
 
 type Query {
     todo(id: ID!): Todo!
-    todos: [Todo!]!
+    todos: TodoPage!
 }
 
 type Todo {
@@ -21,6 +21,11 @@ type Todo {
     id: ID
     isCompleted: Boolean
     title: String
+}
+
+type TodoPage {
+    edges: [Todo!]
+    totalCount: Int
 }
 
 input TodoCreateInput {
