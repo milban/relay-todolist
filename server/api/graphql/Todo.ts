@@ -10,6 +10,16 @@ schema.objectType({
     },
 });
 
+schema.objectType({
+    name: 'TodoPage',
+    definition(t) {
+        t.int('totalCount')
+        t.list.field('edges', {
+           type: 'Todo',
+        })
+    }
+})
+
 schema.inputObjectType({
     name: 'TodoCreateInput',
     definition(t) {
@@ -47,11 +57,14 @@ schema.extendType({
                 return todo;
             }
         })
-        t.list.field('todos', {
+        t.field('todos', {
             nullable: false,
-            type: 'Todo',
+            type: 'TodoPage',
             resolve(_root, _args, ctx) {
-                return ctx.db.todos;
+                return {
+                    totalCount: ctx.db.todos.length,
+                    edges: ctx.db.todos
+                }
             }
         })
     }

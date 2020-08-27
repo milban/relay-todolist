@@ -1,16 +1,17 @@
 import React from "react";
 import { graphql, createFragmentContainer } from "react-relay";
 import {Todo_todo} from "src/fragmentContainer/__generated__/Todo_todo.graphql";
+import {Checkbox} from "antd";
 
 interface TodoProps {
-    todo: Todo_todo
+    todo: Todo_todo;
 }
 
 function Todo({ todo }: TodoProps): JSX.Element {
     return <div>
         <div>{todo.id}</div>
         <span>{todo.title}</span>
-        <input type="checkbox" checked={todo.isCompleted as boolean}/>
+        <Checkbox checked={todo.isCompleted as boolean}/>
         <div>{todo.body}</div>
     </div>
 }
