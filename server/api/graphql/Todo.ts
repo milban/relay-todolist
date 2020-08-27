@@ -106,7 +106,7 @@ schema.extendType({
                 todo = {
                     id: todo.id,
                     body: _args.input.body || todo.body,
-                    title: _args.input.title || todo.body,
+                    title: _args.input.title || todo.title,
                     isCompleted: _args.input.isCompleted ?? todo.isCompleted,
                 };
 
