@@ -1,8 +1,9 @@
 import React, {useCallback, useState} from "react";
 import {createFragmentContainer, graphql} from 'react-relay';
 import {TodoList_todos} from "src/fragmentContainer/__generated__/TodoList_todos.graphql";
-import {Button, Checkbox} from "antd";
+import {Button} from "antd";
 import TodoModal from "src/components/TodoModal";
+import TodoStatus from "src/fragmentContainer/TodoStatus";
 
 interface TodoListProps {
     todos: TodoList_todos;
@@ -22,7 +23,7 @@ function TodoList({todos}: TodoListProps): JSX.Element {
             {todos.edges?.map(todo => (<div>
                 <span>{todo.id}</span>
                 <Button type="link" onClick={() => onClick(todo.id as string)}>{todo.title}</Button>
-                <Checkbox checked={todo.isCompleted ?? undefined} />
+                <TodoStatus todo={todo} />
             </div>)
             )}
             {visible && <TodoModal id={selectedId as string} onCancel={() => setVisible(false)} closable />}
@@ -38,7 +39,7 @@ export default createFragmentContainer(TodoList, {
                 __typename
                 id
                 title
-                isCompleted
+                ...TodoStatus_todo
             }
         }
     `

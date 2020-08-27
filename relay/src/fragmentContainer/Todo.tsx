@@ -1,7 +1,8 @@
 import React from "react";
 import { graphql, createFragmentContainer } from "react-relay";
 import {Todo_todo} from "src/fragmentContainer/__generated__/Todo_todo.graphql";
-import {Checkbox} from "antd";
+import TodoStatus from "src/fragmentContainer/TodoStatus";
+
 
 interface TodoProps {
     todo: Todo_todo;
@@ -11,7 +12,7 @@ function Todo({ todo }: TodoProps): JSX.Element {
     return <div>
         <div>{todo.id}</div>
         <span>{todo.title}</span>
-        <Checkbox checked={todo.isCompleted as boolean}/>
+        <TodoStatus todo={todo} />
         <div>{todo.body}</div>
     </div>
 }
@@ -23,7 +24,7 @@ export default createFragmentContainer(Todo, {
             id
             title
             body
-            isCompleted
+            ...TodoStatus_todo
         }
     `
 })
